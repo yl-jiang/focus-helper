@@ -62,7 +62,7 @@ const translations = {
   'install.title1': 'Two minutes',
   'install.title2': 'to better focus.',
   'install.description': 'Available on the Chrome Web Store. Edge users can install the ZIP package manually.',
-  'install.download': 'Download v1.7.0',
+  'install.download': 'Download v1.7.1',
   'install.step1Title': 'Download and unzip',
   'install.step1Body': 'Unzip the extension into a folder you can keep long-term.',
   'install.step2Title': 'Open the extensions page',
