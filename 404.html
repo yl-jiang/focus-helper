@@ -5,19 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <base href="/focus-helper/">
-  <title>页面未找到｜专注助手</title>
+  <script>
+    document.documentElement.lang = (navigator.language || 'zh-CN').toLowerCase().startsWith('zh') ? 'zh-CN' : 'en';
+    try {
+      const savedLanguage = localStorage.getItem('focus-helper-language');
+      if (savedLanguage === 'en' || savedLanguage === 'zh-CN') document.documentElement.lang = savedLanguage;
+    } catch {}
+  </script>
+  <title data-i18n="error.title">页面未找到｜专注助手</title>
   <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
   <header class="site-header shell">
-    <a class="brand" href="/focus-helper/"><img src="assets/icon.png" alt="" width="40" height="40"><span>专注助手</span></a>
+    <a class="brand" href="/focus-helper/" aria-label="专注助手首页" data-i18n-attr="aria-label:brand.aria"><img src="assets/icon.png" alt="" width="40" height="40"><span data-i18n="brand.name">专注助手</span></a>
+    <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English" hidden>EN</button>
   </header>
   <main class="error-main shell">
     <p class="error-code">404</p>
-    <h1>这一页，<br>暂时不存在。</h1>
-    <p>回到首页，继续了解专注助手。</p>
-    <a class="button button-primary" href="/focus-helper/">返回首页 <span aria-hidden="true">→</span></a>
+    <h1><span data-i18n="error.heading1">这一页，</span><br><span data-i18n="error.heading2">暂时不存在。</span></h1>
+    <p data-i18n="error.body">回到首页，继续了解专注助手。</p>
+    <a class="button button-primary" href="/focus-helper/"><span data-i18n="error.home">返回首页</span> <span aria-hidden="true">→</span></a>
   </main>
 </body>
 </html>
