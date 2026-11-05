@@ -70,7 +70,7 @@ const translations = {
   'install.title1': 'Two minutes',
   'install.title2': 'to better focus.',
   'install.description': 'Available on the Chrome Web Store. Edge users can install the ZIP package manually.',
-  'install.download': 'Download v1.8.0',
+  'install.download': 'Install from Chrome Web Store',
   'install.step1Title': 'Download and unzip',
   'install.step1Body': 'Unzip the extension into a folder you can keep long-term.',
   'install.step2Title': 'Open the extensions page',
@@ -95,6 +95,19 @@ const translations = {
   'error.body': 'Head back home to learn about Focus Assistant.',
   'error.home': 'Back to homepage'
 };
+
+const heroDownload = document.querySelector('.hero-actions .button-primary');
+const browserBrands = navigator.userAgentData && navigator.userAgentData.brands;
+const isGoogleChrome = browserBrands && browserBrands.length > 0
+  ? browserBrands.some(({ brand }) => brand === 'Google Chrome')
+  : /Chrome\//.test(navigator.userAgent) && !/(?:Edg|OPR|Chromium)\//.test(navigator.userAgent);
+if (isGoogleChrome) {
+  heroDownload.href = 'https://chromewebstore.google.com/detail/%E4%B8%93%E6%B3%A8%E5%8A%A9%E6%89%8B/obiboadjnnnmilpfndmgcpgpdbcbhelk?pli=1';
+  heroDownload.removeAttribute('download');
+  heroDownload.target = '_blank';
+  heroDownload.rel = 'noopener noreferrer';
+  heroDownload.querySelector('path').setAttribute('d', 'M6 14 14 6M7 6h7v7');
+}
 
 const storageKey = 'focus-helper-language';
 const languageToggle = document.getElementById('language-toggle');
