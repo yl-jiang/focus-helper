@@ -7,7 +7,7 @@ const translations = {
   'skip': 'Skip to main content',
   'brand.name': 'Focus Assistant',
   'brand.aria': 'Focus Assistant home',
-  'header.install': 'Installation',
+  'header.install': 'Install extension',
   'hero.eyebrow': 'Chrome & Edge extension',
   'hero.title1': 'Give your browsing,',
   'hero.title2': 'a stopping point.',
@@ -97,16 +97,20 @@ const translations = {
 };
 
 const heroDownload = document.querySelector('.hero-actions .button-primary');
+const headerInstall = document.querySelector('.header-link');
 const browserBrands = navigator.userAgentData && navigator.userAgentData.brands;
 const isGoogleChrome = browserBrands && browserBrands.length > 0
   ? browserBrands.some(({ brand }) => brand === 'Google Chrome')
   : /Chrome\//.test(navigator.userAgent) && !/(?:Edg|OPR|Chromium)\//.test(navigator.userAgent);
 if (isGoogleChrome) {
-  heroDownload.href = 'https://chromewebstore.google.com/detail/%E4%B8%93%E6%B3%A8%E5%8A%A9%E6%89%8B/obiboadjnnnmilpfndmgcpgpdbcbhelk?pli=1';
-  heroDownload.removeAttribute('download');
-  heroDownload.target = '_blank';
-  heroDownload.rel = 'noopener noreferrer';
+  for (const link of [heroDownload, headerInstall]) {
+    link.href = 'https://chromewebstore.google.com/detail/%E4%B8%93%E6%B3%A8%E5%8A%A9%E6%89%8B/obiboadjnnnmilpfndmgcpgpdbcbhelk?pli=1';
+    link.removeAttribute('download');
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  }
   heroDownload.querySelector('path').setAttribute('d', 'M6 14 14 6M7 6h7v7');
+  headerInstall.querySelector('[aria-hidden="true"]').textContent = '↗';
 }
 
 const storageKey = 'focus-helper-language';
